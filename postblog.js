@@ -1,26 +1,18 @@
 var request = require('request')
 var read = require('read')
 var bcrypt = require('bcrypt')
+var fs = require('fs')
 
+var body = fs.readFileSync('./newPost.html','utf8')
+console.log(body)
 
 read({ prompt: 'Password: ', silent: true }, function(er, password) {
 
     var postForm = {
         form: {
-            title : 'this is a new blogpost',
-            body : 
-                '<div class="row">\
-                    <div class="col-md-10">\
-                        <section>\
-                            did you encrypt my potato?\
-                        </section>\
-                    </div>\
-                    <div class="col-md-2">\
-                        <aside>\
-                            On a side note...\
-                        </aside>\
-                    </div>\
-                </div>', 
+            title : 'is it responsive?',
+            url : 'responddd',
+            body : body,
             tags :['tteesstt','ttsseeeeeeeeeeett'],
             potato : password
         }
