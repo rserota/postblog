@@ -1,12 +1,43 @@
 <div class="row">
     <div class="col-sm-9">
         <section>
-            this is a section
+            <p>
+                If you spend a significant amount of time editing text on a daily basis, it's probably worth your time to learn how to use a good text editor, and as far as text editors go, I don't think they make them much better than Vim.  Vim is an extremely powerful, flexible, open-source text editor. However, along with all that power and flexibility comes a moderate learning curve. In my experience, it's hard to come across a solid beginner's guide to Vim.  Many guides only lay out the most basic commands, without inspiring the reader to use Vim over another text editor, such as Gedit or Notepad.  Other guides will list every possible command, with no comment on which commands are more useful than others, or when they are most useful.  In this guide, I will discuss how I use Vim.  I will explain which commands I use most, and how I use them.   
+
         </section>
     </div>
     <div class="col-sm-3">
         <aside>
-            On a side note...
+            <p>
+                I don't actually use Vim, per se, unless I'm quickly editing a file at the command line.  For most purposes, I use Sublime Text with Vim keybindings, but many other editors will allow you to use Vim keybindings as well.  Honestly, I think that the Vim keybindings are more important than the specific editor that implements them. Use whichever editor makes you happiest.  
         </aside>
     </div>
 </div>
+<hr>
+<h2>Changing Modes</h2>
+<div class="row">
+    <div class="col-sm-9">
+        <section>
+            <p>
+                Most guides to Vim start out by discussing movement, but that seems silly to me.  There's no sense in trying to move around a document if you haven't typed anything yet.  So first, let's talk about modes.  The two main modes in Vim are <em>command mode</em> (sometimes called <em>normal mode</em>), and insert mode, where you can actually type letters and insert them into your document. There are three main commands to get into insert mode from command mode:
+                <ol>
+                    <li><code>a</code> (<em>append</em>)  
+                    <li><code>i</code> (<em>insert</em>)  
+                    <li><code>o</code> (<em>open</em>). 
+                </ol>
+                <code>a</code> will enter insert mode after the cusor. <code>i</code> will enter insert mode before the cursor. <code>o</code> will create a new, blank line between the current line and the one below it, and enter insert mode there.  I never write anything from top to bottom, but rather I jump around, inserting text here and there, so I use <code>o</code> quite a bit.  All three of these commands can be modified by capitalizing them, but <code>a</code> and <code>i</code> are the most exciting when modified.  <code>A</code> and <code>I</code>, instead of entering insert mode after or before the cursor, will enter insert mode at the end or start of the current line.  I use these two commands all the time.  <code>O</code> will create a blank line and enter insert mode between the current line and the line above it, rather than the one below the current line. This command is nice to know, but I don't use it all that often.  
+            </p>
+            <p>
+                To go back to command mode, there is only one command.  Simply press <code>escape</code>.  
+            </p>
+        </section>
+    </div>
+    <div class="col-sm-3">
+        <aside>
+            <p>
+                Every guide to Vim will tell you that <code>escape</code> is the default command to return to command mode, but no one actually keeps that default setting. Before you even finish reading this guide, I strongly recommend that you remap that command to something more comfortable, since you will probably end up typing it every two to ten seconds.  Many QWERTY typists use the key sequence <code>j j</code> to enter command mode, so they don't even have to leave the home row.  It's also good because there are no English words with two consecutive j's in them, so you are unlikely to accidentally enter command mode while inserting text. Personally, I like to roll my fingers across <code>f d s</code>. Just pick something you can type quickly and comfortably.  
+            </p>
+        </aside>
+    </div>
+</div>
+<hr>

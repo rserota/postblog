@@ -10,7 +10,7 @@ read({ prompt: 'Password: ', silent: true }, function(er, password) {
 
     var postForm = {
         form: {
-            title : 'is it responsive?',
+            title : "A Practical Beginner's Guide to Vim",
             url : 'responddd',
             body : body,
             tags :['tteesstt','ttsseeeeeeeeeeett'],
