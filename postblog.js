@@ -11,9 +11,9 @@ read({ prompt: 'Password: ', silent: true }, function(er, password) {
     var postForm = {
         form: {
             title : "A Practical Beginner's Guide to Vim",
-            url : 'responddd',
+            url : 'practical-guide-to-vim',
             body : body,
-            tags :['tteesstt','ttsseeeeeeeeeeett'],
+            tags :['Vim'],
             potato : password
         }
     }

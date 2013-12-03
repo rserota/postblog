@@ -19,12 +19,12 @@
     <div class="col-sm-9">
         <section>
             <p>
-                Most guides to Vim start out by discussing movement, but that seems silly to me.  There's no sense in trying to move around a document if you haven't typed anything yet.  So first, let's talk about modes.  The two main modes in Vim are <em>command mode</em> (sometimes called <em>normal mode</em>), and insert mode, where you can actually type letters and insert them into your document. There are three main commands to get into insert mode from command mode:
-                <ol>
-                    <li><code>a</code> (<em>append</em>)  
-                    <li><code>i</code> (<em>insert</em>)  
-                    <li><code>o</code> (<em>open</em>). 
-                </ol>
+                Most guides to Vim start out by discussing movement, but that seems silly to me.  There's no sense in trying to move around a document if you haven't typed anything yet.  So first, let's talk about modes.  The two main modes in Vim are <em>command mode</em> (sometimes called <em>normal mode</em>), where you can type commands to move around and edit your document, and insert mode, where you can actually type letters and insert them into your document. There are three main commands to get into insert mode from command mode:
+                <ul>
+                    <li><code>a</code> (<em>append</em>)</li>  
+                    <li><code>i</code> (<em>insert</em>)</li>  
+                    <li><code>o</code> (<em>open</em>)</li> 
+                </ul>
                 <code>a</code> will enter insert mode after the cusor. <code>i</code> will enter insert mode before the cursor. <code>o</code> will create a new, blank line between the current line and the one below it, and enter insert mode there.  I never write anything from top to bottom, but rather I jump around, inserting text here and there, so I use <code>o</code> quite a bit.  All three of these commands can be modified by capitalizing them, but <code>a</code> and <code>i</code> are the most exciting when modified.  <code>A</code> and <code>I</code>, instead of entering insert mode after or before the cursor, will enter insert mode at the end or start of the current line.  I use these two commands all the time.  <code>O</code> will create a blank line and enter insert mode between the current line and the line above it, rather than the one below the current line. This command is nice to know, but I don't use it all that often.  
             </p>
             <p>
@@ -35,9 +35,112 @@
     <div class="col-sm-3">
         <aside>
             <p>
-                Every guide to Vim will tell you that <code>escape</code> is the default command to return to command mode, but no one actually keeps that default setting. Before you even finish reading this guide, I strongly recommend that you remap that command to something more comfortable, since you will probably end up typing it every two to ten seconds.  Many QWERTY typists use the key sequence <code>j j</code> to enter command mode, so they don't even have to leave the home row.  It's also good because there are no English words with two consecutive j's in them, so you are unlikely to accidentally enter command mode while inserting text. Personally, I like to roll my fingers across <code>f d s</code>. Just pick something you can type quickly and comfortably.  
+                Every guide to Vim will tell you that <code>escape</code> is the default command to return to command mode, but no one actually keeps that default setting. Before you even finish reading this guide, I strongly recommend that you remap that command to something more comfortable, since you will probably end up typing it every two to ten seconds.  Many QWERTY typists use the key sequence <code>j j</code> to enter command mode, so they don't even have to leave the home row.  It's also good because there are no English words with two consecutive j's in them, so you are unlikely to accidentally enter command mode while inserting text. Personally, I like to roll my fingers across <code>fds</code>. Just pick something you can type quickly and comfortably.  
             </p>
         </aside>
     </div>
 </div>
 <hr>
+<h2>Movement</h2>
+<div class="row">
+    <div class="col-sm-9">
+        <section>
+            <p>
+                Now that you can actually type text on your screen, let's learn how to move around.  The basic movement commands are:
+                <ul>
+                    <li><code>h</code>(<em>left</em>)</li>
+                    <li><code>j</code>(<em>down</em>)</li>  
+                    <li><code>k</code>(<em>up</em>)</li>
+                    <li><code>l</code>(<em>right</em>)</li>
+                </ul>Honestly, I don't use these commands all that often. There are generally more precise ways to move to wherever you want to be. The movement commands I use most are:
+                <ul>
+                    <li><code>w</code>(<em>word</em>)</li>
+                    <li><code>e</code>(<em>end</em>)</li>
+                    <li><code>b</code>(<em>back</em>)</li>
+                </ul>
+                <code>w</code> will move you forward to the beginning of the next word. <code>e</code> will move you forward to the next end of a word.<code>b</code> will move you backward to the next beginning of a word. Note that Vim's definition of 'word' is a little strange.  A string of letters and/or numbers is a word, and a string of punctuation is also a word.  For example, the character string "a;bc.*" is actually six words. These three commands can all be modified by capitalizing them.  When a word-based movement command is modified, it changes Vim's definition of a word to a more strict definition.  When modified, <code>w</code>, <code>e</code>, and <code>b</code> will consider whitespace the only thing that seperates words.  For example, the character string "a;b c.*" would be two words.
+            </p>
+            <p>
+                You can also move by paragraphs in Vim.  Press <code>{</code> or <code>}</code> to move backwards or forwards by paragraph.  I use these commands quite frequently when I'm debugging or simply reading code, since it allows me to jump around by conceptual chunks.  
+            </p>
+            <p>
+                All of the movement commands I've mentioned so far can also be modified by putting a number before them, to repeat the movement that many times.  For example, <code>7w</code> will move the cursor seven words forward. Honestly, I don't do this very much.  If I needed to move forward seven words, I would rather tap <code>w</code> until I got where I wanted to be, rather than count how many words I need to move by.
+            </p>
+            <p>
+                If you have line numbers visible in your text editor, you can take advantage of them and jump straight to specific lines using the <code>G</code> or <code>gg</code> commands (they're equivalent in this case). For example, to jump straight to line 23, type <code>23G</code> or <code>23gg</code>. I find that this is generally the simplest way to the line I'm looking at. If these two commands are not preceded by a number, <code>gg</code> will take you to the first line of the file, and <code>G</code> will take you to the last line of the file. 
+            </p>
+            <p>
+                The last two motion commands that I'll mention here are <code>$</code> and <code>0</code> (zero). <code>$</code> moves you to the end of the line, and <code>0</code> moves oyu to the beginning of the line. I use these commands occasionally.  However, usually when I want to go to the end or beginning of a line, it's because I want to insert text there, in which case <code>A</code> or <code>I</code> would be more precise.
+            </p>
+        </section>
+    </div>
+    <div class="col-sm-3">
+        <aside>
+            <p>
+                Many programming languages give the programmer some flexibility in how they use whitespace, and many of these commands rely on whitespace to determine where to move.  If you are consistent and mindful in your usage of whitespace when writing code, it will make the document easier to navigate. 
+            </p>
+        </aside>
+    </div>
+</div>
+<hr>
+<h2>Delete, Cut, Copy, Paste, Undo</h2>
+<div class="row">
+    <div class="col-sm-9">
+        <section>
+            <p>
+                To simply delete one character at a time, use <code>x</code>. This will delete the character under the cursor, making it function like a forward-delete (not backspace).  If this command is modified to <code>X</code>, it will first move the cursor back one space and then delete, making it function more like a traditional backspace.
+            </p>
+            <p>
+                To cut text in Vim, use <code>d</code> (this command is technically called "delete"). This command must be combined with a motion that specifies what to delete. I often use this to cut a few words at a time, such as with <code>d2w</code>. It's also great to combine with paragraph motions (<code>d{</code> or <code>d}</code>). Other handy delete commands are <code>d0</code> and <code>d$</code>, which cut from the cursor to the end or beginning of the line, respectively. Similarly, <code>dd</code> and <code>D</code> will cut the entire current line. My favorite way to use <code>d</code> is with <code>G</code>, which will cut all the text from the location of the cursor until the specified line. For example, <code>d22G</code> would cut all the text from the cursor till line 22.  I find this to be a very easy way to precisely select large amounts of text.
+            </p>
+            <p>
+                To copy text in Vim, use <code>y</code>. Using Vim-speak, this is referred to as "yanking" text. No one has ever been able to explain to me why it's called yanking, beyond the fact that it is done with the "y" key.  <code>y</code> works the same way as <code>d</code>, and can be modified in all the same ways, except that it copies text instead of cutting it.
+            </p>
+            <p>
+                If you're not exactly sure how to precisely select an awkwardly sized chunk of text, you may find it useful to use visual mode.  Press <code>v</code> to enter visual mode.  In visual mode, you can use various motion commands to move around, and all text will be highlighted between the current location of the cursor, and where the cursor was when you entered visual mode. This is similar to holding shift and moving around with the arrow keys in an ordinary text editor. Once you've selected the text you wanted, you can cut or copy the whole selection with <code>d</code> or <code>y</code>.  To exit visual mode, press <code>v</code> again.
+            <p>
+                Once you've cut or copied some text to the clipboard, you can paste it with <code>p</code>.  By default, this inserts the text from the clipboard after the cursor.  If modified to <code>P</code>, this command will insert the text from the clipboard before the cursor.  Technically, this command is called "put", though I always think of it as "paste".
+            </p>
+            <p>
+                To undo an action, just press <code>u</code>.  To redo an undone action, press <code>ctrl+r</code> (even if you're on a mac, redo uses control, not command).
+            </p>
+        </section>
+    </div>
+    <div class="col-sm-3">
+        <aside>
+            <p>
+                There isn't actually any true 'delete' command in Vim.  Anything that removes text actually puts it in the clipboard.  Just be mindful that if you cut a large chunk of text with <code>d</code>, delete one character with <code>x</code>, and then attempt to paste with <code>p</code>, Vim will paste in the one character you deleted with <code>x</code>. The large selection you cut with <code>d</code> will be lost. Many implementations of Vim support multiple clipboards, so you can cut/copy multiple selections of text, and then paste them into your document in whatever order you like. I don't use this feature, but some people find it very useful.
+            </p>
+        </aside>
+    </div>
+</div>
+<hr>
+<h2>Searching and Scrolling</h2>
+<div class="row">
+    <div class="col-sm-9">
+        <section>
+            <p>
+                There are two final things you should know about to round out your knowledge of Vim: searching and scrolling. To start a search, press <code>/</code>, type in some text to search for, then hit enter. Press <code>n</code> to move forwards through the search results, and press <code>N</code> to move backwards through the results. This is how I use search in Vim, but it is actually much more powerful than what I've described. If you would like to be a sophisticated searcher, you should look up more information on searching in Vim to find out tricky ways to craft your queries.
+            </p>
+            <p>
+                Scrolling commands are not really essential to know, but I really like them. <code>zt</code> will scroll your document so that the cursor is at the top of the screen. <code>zb</code> will scroll your document so that the cursor is at the bottom of the screen. <code>zz</code> will scroll your document so that the cursor is in the middle of the screen. 
+            </p>
+        </section>
+    </div>
+    <div class="col-sm-3">
+        <aside>
+            <p>
+                In Sublime Text, there is an option to enable scrolling beyond the bottom of the document. I like using that option so that I can type in the middle of the screen, even when I'm at the bottom of the document.
+            </p>
+        </aside>
+    </div>
+</div>
+<hr>
+<h2>Now You Know Vim!</h2>
+<div class="row">
+    <div class="col-sm-9">
+        <section>
+            Those are all of the commands that I use in Vim. I feel like a pretty competent Vim user, and if you followed this guide, you should now be a pretty competent Vim user too. I know that this guide is a little thick for a beginner's guide, and yet falls short of a comprehensive manual. My hope is that after reading this guide, using Vim will be faster for you than not using Vim. 
+        </section>
+    </div>
+</div>
