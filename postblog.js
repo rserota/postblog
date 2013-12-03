@@ -18,7 +18,7 @@ read({ prompt: 'Password: ', silent: true }, function(er, password) {
         }
     }
 
-    request.post('http://localhost:3000/submitblog', postForm ,function(error, response, body){
+    request.post('http://www.codecur.io/submitblog', postForm ,function(error, response, body){
             console.log('body: ', body)
             console.log('error: ', error)
     })
